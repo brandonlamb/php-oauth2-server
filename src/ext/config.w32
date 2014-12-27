@@ -1,0 +1,17 @@
+ARG_ENABLE("oauth2", "enable oauth2", "no");
+
+if (PHP_OAUTH2 != "no") {
+  EXTENSION("oauth2", "oauth2.c", null, "-I"+configure_module_dirname);
+  ADD_SOURCES(configure_module_dirname + "/kernel", "main.c memory.c exception.c hash.c debug.c backtrace.c object.c array.c string.c fcall.c require.c file.c operators.c concat.c variables.c filter.c iterator.c exit.c", "oauth2");
+  ADD_SOURCES(configure_module_dirname + "/kernel/extended", "array.c", "oauth2");
+  
+  ADD_SOURCES(configure_module_dirname + "/oauth2", "autoloader.zep.c exception.zep.c requestinterface.zep.c responseinterface.zep.c scope.zep.c scopeinterface.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/clientassertiontype", "clientassertiontypeinterface.zep.c httpbasic.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/controller", "authorizecontrollerinterface.zep.c resourcecontroller.zep.c resourcecontrollerinterface.zep.c tokencontroller.zep.c tokencontrollerinterface.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/encryption", "encryptioninterface.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/granttype", "authorizationcode.zep.c clientcredentials.zep.c granttypeinterface.zep.c jwtbearer.zep.c refreshtoken.zep.c usercredentials.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/responsetype", "accesstoken.zep.c accesstokeninterface.zep.c authorizationcode.zep.c authorizationcodeinterface.zep.c responsetypeinterface.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/storage", "accesstokeninterface.zep.c authorizationcodeinterface.zep.c clientcredentialsinterface.zep.c clientinterface.zep.c jwtaccesstoken.zep.c jwtaccesstokeninterface.zep.c jwtbearerinterface.zep.c publickeyinterface.zep.c refreshtokeninterface.zep.c scopeinterface.zep.c storageinterface.zep.c usercredentialsinterface.zep.c", "oauth2");
+	ADD_SOURCES(configure_module_dirname + "/oauth2/tokentype", "bearer.zep.c mac.zep.c tokentypeinterface.zep.c", "oauth2");
+  ADD_FLAG("CFLAGS_OAUTH2", "/D ZEPHIR_RELEASE");
+}

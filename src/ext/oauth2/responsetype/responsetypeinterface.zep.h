@@ -1,0 +1,14 @@
+
+extern zend_class_entry *oauth2_responsetype_responsetypeinterface_ce;
+
+ZEPHIR_INIT_CLASS(OAuth2_ResponseType_ResponseTypeInterface);
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_oauth2_responsetype_responsetypeinterface_getauthorizeresponse, 0, 0, 1)
+	ZEND_ARG_INFO(0, params)
+	ZEND_ARG_INFO(0, user_id)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(oauth2_responsetype_responsetypeinterface_method_entry) {
+	PHP_ABSTRACT_ME(OAuth2_ResponseType_ResponseTypeInterface, getAuthorizeResponse, arginfo_oauth2_responsetype_responsetypeinterface_getauthorizeresponse)
+  PHP_FE_END
+};

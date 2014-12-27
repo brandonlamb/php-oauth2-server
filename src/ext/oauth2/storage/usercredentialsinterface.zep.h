@@ -1,0 +1,19 @@
+
+extern zend_class_entry *oauth2_storage_usercredentialsinterface_ce;
+
+ZEPHIR_INIT_CLASS(OAuth2_Storage_UserCredentialsInterface);
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_oauth2_storage_usercredentialsinterface_checkusercredentials, 0, 0, 2)
+	ZEND_ARG_INFO(0, username)
+	ZEND_ARG_INFO(0, password)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_oauth2_storage_usercredentialsinterface_getuserdetails, 0, 0, 1)
+	ZEND_ARG_INFO(0, username)
+ZEND_END_ARG_INFO()
+
+ZEPHIR_INIT_FUNCS(oauth2_storage_usercredentialsinterface_method_entry) {
+	PHP_ABSTRACT_ME(OAuth2_Storage_UserCredentialsInterface, checkUserCredentials, arginfo_oauth2_storage_usercredentialsinterface_checkusercredentials)
+	PHP_ABSTRACT_ME(OAuth2_Storage_UserCredentialsInterface, getUserDetails, arginfo_oauth2_storage_usercredentialsinterface_getuserdetails)
+  PHP_FE_END
+};
